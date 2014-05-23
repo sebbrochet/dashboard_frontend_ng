@@ -47,3 +47,10 @@ dashboardControllers.controller('TickerCtrl', ['$scope', 'Restangular',
 
     $scope.getLatestEvents(10);
 }]);
+
+dashboardControllers.controller('AboutCtrl', ['$scope',
+   function ($scope) {
+      $scope.author = "sebbrochet";
+      $scope.version = "v1";
+   }
+]);

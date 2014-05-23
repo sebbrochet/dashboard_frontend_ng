@@ -19,6 +19,10 @@ app.config(function(RestangularProvider, $routeProvider) {
         templateUrl: 'partials/event_ticker.html',
         controller: 'TickerCtrl'
       }).
+      when('/about', {
+        templateUrl: 'partials/about.html',
+        controller: 'AboutCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });
