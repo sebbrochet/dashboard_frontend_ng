@@ -11,9 +11,13 @@ app.config(function(RestangularProvider, $routeProvider) {
         templateUrl: 'partials/project-list.html',
         controller: 'ProjectListCtrl'
       }).
-      when('/projects/:projectId', {
+      when('/projects/:projectName', {
         templateUrl: 'partials/project-detail.html',
         controller: 'ProjectDetailCtrl'
+      }).
+      when('/event_ticker', {
+        templateUrl: 'partials/event_ticker.html',
+        controller: 'TickerCtrl'
       }).
       otherwise({
         redirectTo: '/'

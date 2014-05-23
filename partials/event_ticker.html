@@ -1,0 +1,22 @@
+<h1>Events listed by date (most recent first)</h1>
+<table class="table">
+   <thead>
+      <tr>
+         <th>Date</th>
+         <th>Project</th>
+         <th>Environment</th>
+         <th>Subject</th>
+         <th>Message</th>
+      <tr>
+   </thead>
+   <tbody>
+         <tr ng-repeat="event in events">
+            <td>{{ event.date }}</td>
+            <td><a href="/#/projects/#{event.environment.project.name}">{{ event.environment.project.name }}</a></td>
+            <td>{{ event.environment.name }}</td>
+            <td>{{ event.subject }}</td>
+            <td><pre>{{ event.message }}</pre></td>
+         </tr>
+   </tbody>
+</table>
+
