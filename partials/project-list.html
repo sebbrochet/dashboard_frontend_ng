@@ -2,7 +2,7 @@
      Search: <input ng-model="query">
 </div>
 
-<h1>Project list ({{ projects.length }})</h2>
+<h1>Project list ({{ filtered.length }})</h2>
 
 <table class="table">
    <thead>
@@ -12,7 +12,7 @@
       </tr>
    </thead>
    <tbody>
-        <tr ng-repeat="project in projects | filter:query | orderBy:'name'">
+        <tr ng-repeat="project in filtered = (projects | filter:query | orderBy:'name')">
             <td><a href="#/projects/{{ project.name }}">{{ project.name  }}</a></td>
             <td><pre>{{ project.description  }}</pre></td>
         </tr>

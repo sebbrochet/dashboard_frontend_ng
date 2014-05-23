@@ -1,3 +1,5 @@
+var REST_API = "http://datasource.vidal.net/api/v1"; //"http://django_dashboard.yourdomain.com/api/v1/";
+
 var app = angular.module('dashboardApp', [
    'restangular',
    'ngRoute',
@@ -39,7 +41,7 @@ app.config(function(RestangularProvider, $routeProvider) {
    initializeRoute();
 
    // configure restangular to work with tastypie, which returns data in an objects list, meta data in a meta object
-   RestangularProvider.setBaseUrl("http://datasource.vidal.net/api/v1");
+   RestangularProvider.setBaseUrl(REST_API);
    RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
        var newResponse;
        if (operation === "getList") {
