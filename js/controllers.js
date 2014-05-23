@@ -13,26 +13,36 @@ dashboardControllers.controller('ProjectListCtrl', ['$scope', 'Restangular',
     $scope.getAllProjects();
 }]);
 
-dashboardControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'Restangular',
-   function($scope, $routeParams, Restangular) {
+dashboardControllers.controller('ProjectDetailCtrl', ['$scope', '$routeParams', 'Restangular', '$q',
+   function($scope, $routeParams, Restangular, $q) {
     $scope.environments = [];
 
     $scope.getEnvironments = function(projectName) {
-       Restangular.all("environments").getList({project__name:projectName}).then(function(environments) {
+       return Restangular.all("environments").getList({project__name:projectName}).then(function(environments) {
           $scope.environments = environments;
        });
     }
 
     $scope.getLatestEvent = function(environment) {
-       Restangular.all("events").getList({order_by:"-date", limit:1, environment:environment.id}).then(function(events) {
+       return Restangular.all("events").getList({order_by:"-date", limit:1, environment:environment.id}).then(function(events) {
           environment.latest_event = events[0];
+       });
+    }
+    
+    $scope.getEnvironmentsWithLatestEvent = function(projectName) {
+       return $scope.getEnvironments(projectName).then(function () {
+          var environmentUpdates = []
+
+          for(var i = 0; i < $scope.environments.length; i++) {
+             environmentUpdates.push($scope.getLatestEvent($scope.environments[i]))
+          }
+       
+          return $q.all(environmentUpdates)
        });
     }
 
     $scope.projectName = $routeParams.projectName;
-    $scope.getEnvironments($routeParams.projectName);
-    $scope.getLatestEvent($scope.environments[0].name);
-
+    $scope.getEnvironmentsWithLatestEvent($routeParams.projectName);
 }]);
 
 dashboardControllers.controller('TickerCtrl', ['$scope', 'Restangular',

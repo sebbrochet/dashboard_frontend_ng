@@ -1,1 +1,28 @@
-TBD: detail view for {{phoneId}}
+<div id="main" class="container">
+<h1>{{ projectName }}</h1>
+<h3><a href="#/projects/{{ projectName }}/events"><small>(history)</small></a></h3>
+
+<table class="table" ng-repeat="environment in environments | orderBy:'name'">
+   <thead>
+         <tr>
+            <td>
+               <a href="#/environments/{{ environment.id }}/events&environment={{ environment.name }}">
+               {{ environment.name }}
+               </a>
+            </td>
+         </tr>
+         <tr>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Message</th>
+         </tr>
+   </thead>
+   <tbody>
+         <tr>
+            <td>{{ environment.latest_event.date }}</td>
+            <td>{{ environment.latest_event.subject }}</td>
+            <td><pre>{{ environment.latest_event.message }}</pre></td>
+         </tr>
+   </tbody>
+</table>
+</div>

@@ -14,7 +14,7 @@
    </thead>
    <tbody>
         <tr ng-repeat="project in projects | filter:query | orderBy:'name'">
-            <td><a href="/#/projects/{{ project.name }}">{{ project.name  }}</a></td>
+            <td><a href="#/projects/{{ project.name }}">{{ project.name  }}</a></td>
             <td><pre>{{ project.description  }}</pre></td>
         </tr>
    </tbody>
