@@ -79,3 +79,17 @@ dashboardControllers.controller('EnvironmentDetailCtrl', ['$scope', '$routeParam
 
     $scope.getEvents($routeParams.environmentId);
 }]);
+
+dashboardControllers.controller('ProjectEventListCtrl', ['$scope', '$routeParams', 'Restangular',
+   function($scope, $routeParams, Restangular) {
+    $scope.events = [];
+
+    $scope.getEvents = function(projectName) {
+       return Restangular.all("events").getList({order_by:'-date', environment__project__name:projectName}).then(function(events) {
+          $scope.events = events;
+          $scope.projectName = projectName;
+       });
+    }
+
+    $scope.getEvents($routeParams.projectName);
+}]);

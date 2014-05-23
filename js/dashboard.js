@@ -27,6 +27,10 @@ app.config(function(RestangularProvider, $routeProvider) {
         templateUrl: 'partials/event_environment.html',
         controller: 'EnvironmentDetailCtrl'
       }).
+      when('/projects/:projectName/events', {
+        templateUrl: 'partials/project_event-list.html',
+        controller: 'ProjectEventListCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });
