@@ -23,6 +23,10 @@ app.config(function(RestangularProvider, $routeProvider) {
         templateUrl: 'partials/about.html',
         controller: 'AboutCtrl'
       }).
+      when('/environments/:environmentId/events&environment=:environmentName', {
+        templateUrl: 'partials/event_environment.html',
+        controller: 'EnvironmentDetailCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });

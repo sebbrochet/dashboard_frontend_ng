@@ -64,3 +64,18 @@ dashboardControllers.controller('AboutCtrl', ['$scope',
       $scope.version = "v1";
    }
 ]);
+
+dashboardControllers.controller('EnvironmentDetailCtrl', ['$scope', '$routeParams', 'Restangular',
+   function($scope, $routeParams, Restangular) {
+    $scope.events = [];
+
+    $scope.getEvents = function(environmentId) {
+       return Restangular.all("events").getList({order_by:"-date", environment:environmentId}).then(function(events) {
+          $scope.events = events;
+          $scope.environment = events[0].environment;
+          $scope.project = events[0].environment.project;
+       });
+    }
+
+    $scope.getEvents($routeParams.environmentId);
+}]);
