@@ -50,12 +50,15 @@ dashboardControllers.controller('TickerCtrl', ['$scope', 'Restangular',
     $scope.events = [];
 
     $scope.getLatestEvents = function(nb_events) {
+       //console.log("Getting new events...");
        Restangular.all("events").getList({limit:nb_events, order_by:"-date"}).then(function(events) { 
           $scope.events = events;
        });
     }
 
     $scope.getLatestEvents(10);
+
+    setInterval(function(){ $scope.getLatestEvents(10); }, 60000);
 }]);
 
 dashboardControllers.controller('AboutCtrl', ['$scope',
