@@ -12,7 +12,7 @@
    </thead>
    <tbody>
          <tr ng-repeat="event in events">
-            <td>{{ event.date }}</td>
+            <td>{{ event.date | date: 'EEE, MMMM d, y HH:mm:ss' }}</td>
             <td><a href="#/projects/{{ event.environment.project.name }}">{{ event.environment.project.name }}</a></td>
             <td>{{ event.environment.name }}</td>
             <td>{{ event.subject }}</td>

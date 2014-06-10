@@ -18,7 +18,7 @@
    </thead>
    <tbody>
          <tr>
-            <td>{{ environment.latest_event.date }}</td>
+            <td>{{ environment.latest_event.date | date: 'EEE, MMMM d, y HH:mm:ss' }}</td>
             <td>{{ environment.latest_event.subject }}</td>
             <td><pre>{{ environment.latest_event.message }}</pre></td>
          </tr>
