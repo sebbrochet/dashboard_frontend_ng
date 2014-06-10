@@ -1,4 +1,4 @@
-var REST_API = "http://datasource.vidal.net/api/v1"; //"http://django_dashboard.yourdomain.com/api/v1/";
+var REST_API = "http://django_dashboard.yourdomain.com/api/v1/";
 
 var app = angular.module('dashboardApp', [
    'restangular',
