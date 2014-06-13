@@ -1,5 +1,7 @@
 ## Javascript front-end to display a Release Dashboard based on [django_dashboard](https://github.com/sebbrochet/django_dashboard)
 
+![My image](http://sebbrochet.github.io/dashboard_frontend_ng/images/dashboard.png)
+
 Installation:
 -------------
 * Clone repository   
